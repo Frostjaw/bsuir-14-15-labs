@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "D:/bsuir-14-15-labs/APVMIS/Lab1/aluw1.xst" -ofn "D:/bsuir-14-15-labs/APVMIS/Lab1/aluw1.syr" 
+xst -intstyle ise -ifn "D:/bsuir-14-15-labs/APVMIS/Lab1/aluw1.xst" -ofn "D:/bsuir-14-15-labs/APVMIS/Lab1/aluw1.syr" 
