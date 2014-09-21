@@ -37,6 +37,8 @@ GLuint textureIds[TEXTURES_COUNT];
 string texturePaths[TEXTURES_COUNT] = {"..\\..\\res\\box.bmp", "..\\..\\res\\ground.bmp"};
 //***********************************
 
+float fSceneTranslationY = 0.0;
+float fSceneTranslationX = 0.0;
 float fSceneRotationAngleY = 30.0;
 float fSceneRotationAngleX = 30.0;
 
@@ -175,13 +177,13 @@ void drawSurface() {
 
 	glBegin(GL_QUADS);
 	glTexCoord2f(1.0, 1.0);
-	glVertex3f(+1.0f, -1.0f, +1.0f);
+	glVertex3f(+2.0f, -1.0f, +2.0f);
 	glTexCoord2f(0.0, 1.0);
-	glVertex3f(-1.0f, -1.0f, +1.0f);
+	glVertex3f(-2.0f, -1.0f, +2.0f);
 	glTexCoord2f(0.0, 0.0);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-2.0f, -1.0f, -2.0f);
 	glTexCoord2f(1.0, 0.0);
-	glVertex3f(+1.0f, -1.0f, -1.0f);
+	glVertex3f(+2.0f, -1.0f, -2.0f);
 	glEnd();
 	glPopMatrix();
 }
@@ -319,7 +321,9 @@ void display() {
 	glPushMatrix();
 	// -------------------------------------
 	// ----------- Scene global ------------
-	//gluPerspective(120, (float)16 / 9, 0.5, 2.0);
+	//gluPerspective(90, (float)16 / 9, -4.0, 4.0);
+
+	glTranslatef(fSceneTranslationX, fSceneTranslationY, 0.0);
 
 	glRotatef(fSceneRotationAngleX, 1.0, 0.0, 0.0);
 	glRotatef(fSceneRotationAngleY, 0.0, 1.0, 0.0);
@@ -377,20 +381,30 @@ void keyboardFunc(unsigned char key, int x, int y) {
 
 int _x = MAXINT32;
 int _y = MAXINT32;
+int __x = MAXINT32;
+int __y = MAXINT32;
 float _fSceneRotationAngleX;
 float _fSceneRotationAngleY;
+float _fSceneTranslationX;
+float _fSceneTranslationY;
 
 void mouseFunc(int button, int state, int x, int y) {
+
+	_x = MAXINT32;
+	_y = MAXINT32;
+	__x = MAXINT32;
+	__y = MAXINT32;
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 		_fSceneRotationAngleX = fSceneRotationAngleX;
 		_fSceneRotationAngleY = fSceneRotationAngleY;
 		_x = x;
 		_y = y;
-	}
-	else {
-		_x = MAXINT32;
-		_y = MAXINT32;
+	} else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
+		_fSceneTranslationX = fSceneTranslationX;
+		_fSceneTranslationY = fSceneTranslationY;
+		__x = x;
+		__y = y;
 	}
 }
 
@@ -403,22 +417,32 @@ void motionFunc(int x, int y) {
 	if (_y != MAXINT32) {
 		fSceneRotationAngleX = _fSceneRotationAngleX - (float)(_y - y) / 2;
 	}
+
+	if (__x != MAXINT32) {
+		fSceneTranslationX = _fSceneTranslationX - (__x - x);
+		fSceneTranslationX /= 500;
+	}
+
+	if (__y != MAXINT32) {
+		fSceneTranslationY = _fSceneTranslationY + (__y - y);
+		fSceneTranslationY /= 500;
+	}
 }
 
 void reshapeFunc(int width, int height) {
 
 	GLfloat aspect = (GLfloat)width / (GLfloat)(height == 0 ? 1 : height);
-
+	
 	glViewport(0, 0, width, height);
 
 	glMatrixMode(GL_PROJECTION);  // To operate on the Projection matrix
 	glLoadIdentity();             // Reset the projection matrix
 
 	if (width >= height) {
-		glOrtho(-1.0 * aspect, 1.0 * aspect, -1.0, 1.0, -1.0, 1.0);
+		glOrtho(-1.0 * aspect, 1.0 * aspect, -1.0, 1.0, -4.0, 4.0);
 	}
 	else {
-		glOrtho(-1.0, 1.0, -1.0 / aspect, 1.0 / aspect, -1.0, 1.0);
+		glOrtho(-1.0, 1.0, -1.0 / aspect, 1.0 / aspect, -4.0, 4.0);
 	}
 }
 
