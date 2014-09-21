@@ -37,134 +37,118 @@ GLuint textureIds[TEXTURES_COUNT];
 string texturePaths[TEXTURES_COUNT] = {"..\\..\\res\\box.bmp", "..\\..\\res\\ground.bmp"};
 //***********************************
 
+float fSceneRotationAngleY = 30.0;
+float fSceneRotationAngleX = 30.0;
+
 typedef struct {
 	float x;
 	float y;
 	float z;
 } Vertex3f;
 
-vector<Vertex3f> box_vertex_array;
-vector<Vertex3f> crane_vertex_array;
+class GLObject {
 
-bool parse_obj(string filename, vector<Vertex3f> & vertex_array) {
+	private:
+		GLuint textureId = -1;
+		vector<Vertex3f> v_array;
+		vector<Vertex3f> vt_array;
 
-	vector<Vertex3f> raw_vertex_array;
+		bool parse_obj(string filename, vector<Vertex3f> & vertex_array, vector<Vertex3f> & vt_array) {
 
-	ifstream file(filename, ios_base::in);
+			vector<Vertex3f> raw_vertex_array;
+			vector<Vertex3f> raw_vt_array;
 
-	if (!file.is_open()) {
-		return false;
-	}
+			ifstream file(filename, ios_base::in);
 
-	string line;
-	while (getline(file, line))
-	{
-		string prefix;
-		istringstream iss(line);
+			if (!file.is_open()) {
+				return false;
+			}
 
-		iss >> prefix;
+			string line;
+			while (getline(file, line))
+			{
+				string prefix;
+				istringstream iss(line);
 
-		if (prefix == "v") {
-			Vertex3f vertex;
-			iss >> vertex.x >> vertex.y >> vertex.z;
-			raw_vertex_array.push_back(vertex);
+				iss >> prefix;
+
+				if (prefix == "v") {
+					Vertex3f vertex;
+					iss >> vertex.x >> vertex.y >> vertex.z;
+					raw_vertex_array.push_back(vertex);
+				}
+				else if (prefix == "vt") {
+					Vertex3f vt;
+					vt.z = 0;
+					iss >> vt.x >> vt.y;
+					raw_vt_array.push_back(vt);
+				}
+				else if (prefix == "f") {
+					char _;
+					string vertex1_str;
+					string vertex2_str;
+					string vertex3_str;
+					iss >> vertex1_str >> vertex2_str >> vertex3_str;
+
+					int v1_id, v2_id, v3_id;
+					int vt1_id, vt2_id, vt3_id;
+
+					istringstream v1ss(vertex1_str);
+					v1ss >> v1_id;
+					v1ss >> _ >> vt1_id;
+					istringstream v2ss(vertex2_str);
+					v2ss >> v2_id;
+					v2ss >> _ >> vt2_id;
+					istringstream v3ss(vertex3_str);
+					v3ss >> v3_id;
+					v3ss >> _ >> vt3_id;
+
+					vertex_array.push_back(raw_vertex_array[v1_id - 1]);
+					vertex_array.push_back(raw_vertex_array[v2_id - 1]);
+					vertex_array.push_back(raw_vertex_array[v3_id - 1]);
+
+					vt_array.push_back(raw_vt_array[vt1_id - 1]);
+					vt_array.push_back(raw_vt_array[vt2_id - 1]);
+					vt_array.push_back(raw_vt_array[vt3_id - 1]);
+				}
+			}
+
+			file.close();
+			return true;
 		}
-		else if (prefix == "f") {
-			string vertex1_str;
-			string vertex2_str;
-			string vertex3_str;
-			iss >> vertex1_str >> vertex2_str >> vertex3_str;
 
-			int v1_id, v2_id, v3_id;
-			
-			istringstream v1ss(vertex1_str);
-			v1ss >> v1_id;
-			istringstream v2ss(vertex2_str);
-			v2ss >> v2_id;
-			istringstream v3ss(vertex3_str);
-			v3ss >> v3_id;
-			
-			vertex_array.push_back(raw_vertex_array[v1_id - 1]);
-			vertex_array.push_back(raw_vertex_array[v2_id - 1]);
-			vertex_array.push_back(raw_vertex_array[v3_id - 1]);
+	public:
+
+		GLObject(string filepath, GLuint textureId = -1) {
+			parse_obj(filepath, v_array, vt_array);
+			this->textureId = textureId;
 		}
-	}
 
-	file.close();
-	return true;
-}
+		void GLDraw(float x, float y, float z, float scale) {
 
-void drawTexturedBox(float x, float y, float z, float scale) {
+			if (this->textureId != -1) {
+				glBindTexture(GL_TEXTURE_2D, this->textureId);
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			}
 
-	glColor3f(1, 1, 1);
+			glPushMatrix();
+			glTranslatef(x, y, z);
+			glScalef(scale, scale, scale);
+			glBegin(GL_TRIANGLES);
+			for (int i = 0; i < (signed)v_array.size(); i++) {
+				if ((signed)vt_array.size() > i) {
+					glTexCoord2f(vt_array[i].x, vt_array[i].y);
+				}
+				glVertex3f(v_array[i].x, v_array[i].y, v_array[i].z);
+			}
+			glEnd();
+			glPopMatrix();
+		}
+};
 
-	glBindTexture(GL_TEXTURE_2D, textureIds[BOX_TEXTURE]);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	glPushMatrix();
-	glTranslatef(x, y, z);
-	glScalef(scale, scale, scale);
-	glTranslatef(-0.5, 0.0, -0.5);
-	glBegin(GL_QUADS);
-
-	glTexCoord2f(1.0, 1.0);
-	glVertex3f(+1.0, +0.0, +1.0);
-	glTexCoord2f(0.0, 1.0);
-	glVertex3f(-0.0, +0.0, +1.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(-0.0, +0.0, -0.0);
-	glTexCoord2f(1.0, 0.0);
-	glVertex3f(+1.0, +0.0, -0.0);
-
-	glTexCoord2f(1.0, 1.0);
-	glVertex3f(+1.0, +1.0, +1.0);
-	glTexCoord2f(0.0, 1.0);
-	glVertex3f(-0.0, +1.0, +1.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(-0.0, +1.0, -0.0);
-	glTexCoord2f(1.0, 0.0);
-	glVertex3f(+1.0, +1.0, -0.0);
-
-	glTexCoord2f(1.0, 1.0);
-	glVertex3f(+0.0, +0.0, +0.0);
-	glTexCoord2f(0.0, 1.0);
-	glVertex3f(-0.0, +1.0, +0.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(-0.0, +1.0, +1.0);
-	glTexCoord2f(1.0, 0.0);
-	glVertex3f(+0.0, +0.0, +1.0);
-
-	glTexCoord2f(1.0, 1.0);
-	glVertex3f(+1.0, +0.0, +0.0);
-	glTexCoord2f(0.0, 1.0);
-	glVertex3f(+1.0, +1.0, +0.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(+1.0, +1.0, +1.0);
-	glTexCoord2f(1.0, 0.0);
-	glVertex3f(+1.0, +0.0, +1.0);
-
-	glTexCoord2f(1.0, 1.0);
-	glVertex3f(+0.0, +0.0, +0.0);
-	glTexCoord2f(0.0, 1.0);
-	glVertex3f(+1.0, +0.0, +0.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(+1.0, +1.0, +0.0);
-	glTexCoord2f(1.0, 0.0);
-	glVertex3f(+0.0, +1.0, +0.0);
-
-	glTexCoord2f(1.0, 1.0);
-	glVertex3f(+0.0, +0.0, +1.0);
-	glTexCoord2f(0.0, 1.0);
-	glVertex3f(+1.0, +0.0, +1.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(+1.0, +1.0, +1.0);
-	glTexCoord2f(1.0, 0.0);
-	glVertex3f(+0.0, +1.0, +1.0);
-
-	glEnd();
-	glPopMatrix();
-}
+GLObject *box;
+GLObject *crane;
 
 void drawObject(vector<Vertex3f> & vertex_array, float x, float y, float z, float scale) {
 	glPushMatrix();
@@ -336,48 +320,43 @@ void display() {
 	// -------------------------------------
 	// ----------- Scene global ------------
 	//gluPerspective(120, (float)16 / 9, 0.5, 2.0);
-	glRotatef(30, 1, 0, 0);
-	glRotatef(30, 0, 1, 0);
 
-	static float angle = 30;
-	glRotatef(angle++, 0.0, 1.0, 0.0);
+	glRotatef(fSceneRotationAngleX, 1.0, 0.0, 0.0);
+	glRotatef(fSceneRotationAngleY, 0.0, 1.0, 0.0);
+
 	spot(0, 0, 0, 1, 1, 1);
 	//drawAxis();
 	glScalef(0.5, 0.5, 0.5);
 
 	glColor3f(0.2, 0.2, 0.2);
+	glPushMatrix();
+	glTranslatef(0.0, -0.01, 0.0);
 	drawSurface();
+	glPopMatrix();
 	// -------------------------------------
 	// ------------- Objects ---------------
-	/*
-	GLfloat mat_specular[] = { 0.3, 0.3, 1.0, 1.0 };
-	GLfloat mat_shininess[] = { 100.0 };
-	glShadeModel(GL_SMOOTH);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-	*/
 
-	drawTexturedBox(0.0, -1.000, 0.42, 0.275);
-	drawTexturedBox(0.0, -0.725, 0.42, 0.275);
+	box->GLDraw(0.0, -1.0 + 0.0000, 0.42, 0.1375);
+	box->GLDraw(0.0, -1.0 + 0.2750, 0.42, 0.1375);
 
 	glPushMatrix();
 	transitionForBox1();
-	drawTexturedBox(0.0, -0.450, 0.42, 0.275);
+	box->GLDraw(0.0, -0.450, 0.42, 0.1375);
 	glPopMatrix();
 
-	drawTexturedBox(0.275, -1.000, 0.42, 0.275);
-	drawTexturedBox(0.275, -0.725, 0.42, 0.275);
+	box->GLDraw(0.275, -1.0 + 0.0000, 0.42, 0.1375);
+	box->GLDraw(0.275, -1.0 + 0.2750, 0.42, 0.1375);
 
 	glPushMatrix();
 	transitionForBox2();
-	drawTexturedBox(0.275, -0.450, 0.42, 0.275);
+	box->GLDraw(0.275, -0.450, 0.42, 0.1375);
 	glPopMatrix();
 
 	glColor3f(1.0, 1.0, 0.0);
 	glPushMatrix();
 	glTranslatef(0, -1, 0);
 	transitionForCrane();
-	drawObject(crane_vertex_array, +0.0, -0.0, +0.0, 0.25);
+	crane->GLDraw(0.0, 0.0, 0.0, 0.25);
 	glPopMatrix();
 
 	// -------------------------------------
@@ -393,6 +372,36 @@ void keyboardFunc(unsigned char key, int x, int y) {
 			break;
 		default:
 			exit(0);
+	}
+}
+
+int _x = MAXINT32;
+int _y = MAXINT32;
+float _fSceneRotationAngleX;
+float _fSceneRotationAngleY;
+
+void mouseFunc(int button, int state, int x, int y) {
+
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+		_fSceneRotationAngleX = fSceneRotationAngleX;
+		_fSceneRotationAngleY = fSceneRotationAngleY;
+		_x = x;
+		_y = y;
+	}
+	else {
+		_x = MAXINT32;
+		_y = MAXINT32;
+	}
+}
+
+void motionFunc(int x, int y) {
+
+	if (_x != MAXINT32) {
+		fSceneRotationAngleY = _fSceneRotationAngleY - (_x - x);
+	}
+
+	if (_y != MAXINT32) {
+		fSceneRotationAngleX = _fSceneRotationAngleX - (float)(_y - y) / 2;
 	}
 }
 
@@ -446,6 +455,8 @@ void setupTextures() {
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
 	for (int i = 0; i < TEXTURES_COUNT; i++) {
+		cout << "Loading '" << texturePaths[i] << "'..." << endl;
+
 		glBindTexture(GL_TEXTURE_2D, textureIds[i]);
 
 		// Load bitmap data
@@ -466,28 +477,33 @@ void setupTextures() {
 
 int main(int argc, char **argv) {
 
-  	bool success = parse_obj("..\\..\\res\\crane.obj", crane_vertex_array) && parse_obj("..\\..\\res\\cube.obj", box_vertex_array);
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+	glutCreateWindow("");
+	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	glutInitWindowPosition(0, 0);
+	glutDisplayFunc(display);
+	glutReshapeFunc(reshapeFunc);
+	glutKeyboardFunc(keyboardFunc);
+	glutMouseFunc(mouseFunc);
+	glutMotionFunc(motionFunc);
+	glutTimerFunc(TIME_INTERVAL_MS, timerFunc, 0);
+	glutFullScreen();
 
-	if (success) {
-		glutInit(&argc, argv);
-		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-		glutCreateWindow("");
-		glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-		glutInitWindowPosition(0, 0);
-		glutDisplayFunc(display);
-		glutReshapeFunc(reshapeFunc);
-		glutKeyboardFunc(keyboardFunc);
-		glutTimerFunc(TIME_INTERVAL_MS, timerFunc, 0);
-		glutFullScreen();
+	cout << "Loading textures..." << endl;
 
-		setupTextures();
+	setupTextures();
 
-		glutMainLoop();
-	}
-	else {
-		cout << "Error";
-		_getch();
-	}
+	cout << "Done." << endl;
+
+	cout << "Loading objects..." << endl;
+
+	box = new GLObject("..\\..\\res\\cube.obj", textureIds[BOX_TEXTURE]);
+	crane = new GLObject("..\\..\\res\\crane.obj");
+
+	cout << "Done.";
+
+	glutMainLoop();
 
 	return 0;
 }
