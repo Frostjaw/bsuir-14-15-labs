@@ -37,6 +37,7 @@ GLuint textureIds[TEXTURES_COUNT];
 string texturePaths[TEXTURES_COUNT] = {"..\\..\\res\\box.bmp", "..\\..\\res\\ground.bmp"};
 //***********************************
 
+float fSceneZoom = 0.5;
 float fSceneTranslationY = 0.0;
 float fSceneTranslationX = 0.0;
 float fSceneRotationAngleY = 30.0;
@@ -330,7 +331,7 @@ void display() {
 
 	spot(0, 0, 0, 1, 1, 1);
 	//drawAxis();
-	glScalef(0.5, 0.5, 0.5);
+	glScalef(fSceneZoom, fSceneZoom, fSceneZoom);
 
 	glColor3f(0.2, 0.2, 0.2);
 	glPushMatrix();
@@ -373,6 +374,12 @@ void keyboardFunc(unsigned char key, int x, int y) {
 	switch (key) {
 		case VK_SPACE:
 			resetTimer();
+			break;
+		case '+':
+			fSceneZoom += 0.1;
+			break;
+		case '-':
+			fSceneZoom -= 0.1;
 			break;
 		default:
 			exit(0);
@@ -525,8 +532,9 @@ int main(int argc, char **argv) {
 	box = new GLObject("..\\..\\res\\cube.obj", textureIds[BOX_TEXTURE]);
 	crane = new GLObject("..\\..\\res\\crane.obj");
 
-	cout << "Done.";
+	cout << "Done." << endl;;
 
+	cout << "Rendering..." << endl;
 	glutMainLoop();
 
 	return 0;
