@@ -426,13 +426,11 @@ void motionFunc(int x, int y) {
 	}
 
 	if (__x != MAXINT32) {
-		fSceneTranslationX = _fSceneTranslationX - (__x - x);
-		fSceneTranslationX /= 500;
+		fSceneTranslationX = _fSceneTranslationX - (float)(__x - x) / 500;
 	}
 
 	if (__y != MAXINT32) {
-		fSceneTranslationY = _fSceneTranslationY + (__y - y);
-		fSceneTranslationY /= 500;
+		fSceneTranslationY = _fSceneTranslationY + (float)(__y - y) / 500;
 	}
 }
 
