@@ -1,0 +1,3 @@
+vhdl work "jk.vhd"
+vhdl work "c590.vhd"
+vhdl work "c590_test.vhd"

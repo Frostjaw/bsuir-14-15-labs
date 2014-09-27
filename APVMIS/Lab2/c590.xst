@@ -1,0 +1,5 @@
+set -tmpdir "D:/bsuir-14-15-labs/APVMIS/Lab2/xst/projnav.tmp"
+set -xsthdpdir "D:/bsuir-14-15-labs/APVMIS/Lab2/xst"
+elaborate
+-ifn c590.prj
+-ifmt mixed
