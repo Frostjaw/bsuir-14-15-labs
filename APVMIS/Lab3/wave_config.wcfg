@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="G:/bsuir-14-15-labs/APVMIS/Lab3/c590_test_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="c590_test" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="textio" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="12" />
+   <wvobject fp_name="/c590_test/oe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">oe</obj_property>
+      <obj_property name="ObjectShortName">oe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/rclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rclk</obj_property>
+      <obj_property name="ObjectShortName">rclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/ccken" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ccken</obj_property>
+      <obj_property name="ObjectShortName">ccken</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/cclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cclk</obj_property>
+      <obj_property name="ObjectShortName">cclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/cclr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cclr</obj_property>
+      <obj_property name="ObjectShortName">cclr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/rco" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rco</obj_property>
+      <obj_property name="ObjectShortName">rco</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/q" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">q[7:0]</obj_property>
+      <obj_property name="ObjectShortName">q[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/q_ref" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">q_ref[7:0]</obj_property>
+      <obj_property name="ObjectShortName">q_ref[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/clock_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_period</obj_property>
+      <obj_property name="ObjectShortName">clock_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/cclr_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">cclr_period</obj_property>
+      <obj_property name="ObjectShortName">cclr_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/oe_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">oe_period</obj_property>
+      <obj_property name="ObjectShortName">oe_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/c590_test/ccken_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">ccken_period</obj_property>
+      <obj_property name="ObjectShortName">ccken_period</obj_property>
+   </wvobject>
+</wave_config>
