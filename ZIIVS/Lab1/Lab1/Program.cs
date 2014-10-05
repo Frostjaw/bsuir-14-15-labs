@@ -13,8 +13,8 @@ namespace Lab1
         static List<String> letters = new List<String> { "М", "И", "Ц", "А", "Р", "Я", "Т", "У" };
         static List<String> library = new List<String> { "АРМИЯ", "МИРТА", "МИЦАР", "УТЯТА", "МАРИЯ", "ЦИТРА", "ТАРТУ", "МУМИЯ", "РАЦИЯ", "ТРАТА", "МАРТА", "ТАТРА", "МАРАТ", "АРТУР", "ТИАРА", "АРАМА", "ТИМУР" };
 
-        static String signal = "000101101001101010110010011001001000000100001"; // Var 1
-        //static String signal = "111101101001101010110010011001101111010011000"; // Var 2*
+        //static String signal = "000101101001101010110010011001001000000100001"; // Var 1
+        static String signal = "111101101001101010110010011001101111010011000"; // Var 2*
         //static String signal = "111101101001101111101011001000100000011100101"; // Var 3
         //static String signal = "111101101001101111101000110111111101100001000"; // Var 4*
         //static String signal = "011101101001101100000011111101111110000110111"; // Var 5
@@ -69,6 +69,11 @@ namespace Lab1
                         {
                             decodedWords.Add(library[p.Y]);
                         }
+                    }
+
+                    if (decodedWords.Count > 3)
+                    {
+                        continue;
                     }
 
                     foreach (String word in decodedWords)
