@@ -69,11 +69,6 @@ ARCHITECTURE behavior OF c590_test IS
 
    -- Clock period definitions
 	constant clock_period : time := 100 ns;
-	constant CCLR_period : time := 26000 ns;
-	constant OE_period : time := 30000 ns;
-	constant CCKEN_period : time := 32000 ns;
-	
-	signal q_ref : std_logic_vector(7 downto 0);
  
 BEGIN
  
@@ -87,107 +82,178 @@ BEGIN
           RCO => RCO,
           Q => Q
         );
-		  
-	CLK_proc : process
-	begin
 	
-	CCLK <= '1';
-	RCLK <= '0';
-	wait for clock_period / 2;
-	CCLK <= '0';
-	RCLK <= '1';
-	wait for clock_period / 2;
-	
-	end process;
-		  
-	process
+	init: process
+		variable counter : integer := 255;
+		variable q_int : integer := 0;
 	begin
 		OE <= '0';
 		CCKEN <= '0';
 		CCLR <= '1';
-
-		wait for clock_period * 1.5; -- wait for second RCLK tick
-	
-		-- 1
-		for j in 0 to 255 loop
-			q_ref <= conv_std_logic_vector(j, 8);
+		CCLK <= '1';
+		RCLK <= '0';
+		
+		wait for clock_period * 2;
+		
+		-- 1 (COUNT + RCO)
+		for i in 0 to 255 loop
+		
+			wait for clock_period / 2;
+			CCLK <= '0';
+			RCLK <= '1';
 			
-			if not Q = q_ref then
-				report "[1] COUNT error";
+			wait for clock_period / 8;
+			
+			q_int := conv_integer(Q);
+			
+			if q_int = counter then
+			else report "FAIL";
+			end if;
+			if ((counter = 255) and not (RCO = '0')) or ((counter /= 255) and (RCO = '0')) then
+				report "FAIL";
 			end if;
 			
-			if (j = 255) and not (RCO = '0') then
-				report "[1] RCO error";
+			wait for clock_period / 2;
+			CCLK <= '1';
+			RCLK <= '0';
+			
+			wait for clock_period / 8;
+			
+			if q_int = counter then
+			else report "FAIL";
 			end if;
-
-			wait for clock_period;
+			
+			if counter = 255 then
+				counter := 0;
+			else
+				counter := counter + 1;
+			end if;
+		
 		end loop;
 		
-		-- 2
-		for j in 0 to 255 loop
-			q_ref <= conv_std_logic_vector(j, 8);
+		-- 2 (CCLR)
+		for i in 0 to 255 loop
 			
-			if j = 100 then
+			if i = 200 then
+				counter := 0;
+			end if;
+		
+			if i > 100 and i < 200 then
 				CCLR <= '0';
+			else
+				CCLR <= '1';
+			end if;
+		
+			wait for clock_period / 2;
+			CCLK <= '0';
+			RCLK <= '1';
+			
+			wait for clock_period / 8;
+			
+			q_int := conv_integer(Q);
+			
+			if ((q_int = counter) and (CCLR = '1')) or ((q_int = 0) and (CCLR = '0')) then
+			else report "FAIL";
 			end if;
 			
-			if (not Q = q_ref) and (CCLR = '1') then
-				report "[2] COUNT error";
-			elsif (not Q = "00000000") and (CCLR = '0') then
-				report "[2] CCLR error";
+			wait for clock_period / 2;
+			CCLK <= '1';
+			RCLK <= '0';
+			
+			wait for clock_period / 8;
+			
+			if ((q_int = counter) and (CCLR = '1')) or ((q_int = 0) and (CCLR = '0')) then
+			else report "FAIL";
 			end if;
-
-			wait for clock_period;
+			
+			if counter = 255 then
+				counter := 0;
+			else
+				counter := counter + 1;
+			end if;
+		
 		end loop;
 		
-		CCLR <= '1';
-		
-		-- 3
-		for j in 0 to 255 loop
-			q_ref <= conv_std_logic_vector(j, 8);
+		-- 3 (CCKEN)
+		for i in 0 to 255 loop
 			
-			if j = 100 then
-				OE <= '1';
+			wait for clock_period / 2;
+			CCLK <= '0';
+			RCLK <= '1';
+			
+			wait for clock_period / 8;
+			
+			q_int := conv_integer(Q);
+			
+			if q_int = counter then
+			else report "FAIL";
 			end if;
 			
-			if (not Q = q_ref) and (OE = '1') then
-				report "[3] COUNT error";
-			elsif (not Q = "ZZZZZZZZ") and (OE = '0') then
-				report "[3] OE error";
-			end if;
-
-			wait for clock_period;
-		end loop;
-		
-		OE <= '0';
-		
-		-- 4
-		for j in 0 to 255 loop
-			if j <= 100 then
-				q_ref <= conv_std_logic_vector(j, 8);
+			wait for clock_period / 2;
+			CCLK <= '1';
+			RCLK <= '0';
+			
+			wait for clock_period / 8;
+			
+			if q_int = counter then
+			else report "FAIL";
 			end if;
 			
-			if j >= 200 then
-				q_ref <= conv_std_logic_vector(j - 100, 8);
+			if i = 101 then
+				counter := counter + 1;
 			end if;
 			
-			if j = 100 then
+			if i > 100 and i < 200 then
 				CCKEN <= '1';
-			end if;
-			
-			if j = 200 then
+			else
 				CCKEN <= '0';
+				
+				if counter = 255 then
+					counter := 0;
+				else
+					counter := counter + 1;
+				end if;
+			end if;
+		
+		end loop;
+		
+		-- 4 (OE)
+		for i in 0 to 255 loop
+			
+			if i > 100 and i < 200 then
+				OE <= '1';
+			else
+				OE <= '0';
 			end if;
 			
-			if not Q = q_ref then
-				report "[4] COUNT error";
+			wait for clock_period / 2;
+			CCLK <= '0';
+			RCLK <= '1';
+			
+			wait for clock_period / 8;
+			
+			if ((OE = '1') and (Q = "ZZZZZZZZ")) or ((OE = '0') and not (Q = "ZZZZZZZZ")) then
+			else report "FAIL";
 			end if;
-
-			wait for clock_period;
-		end loop;
-	
-		CCKEN <= '0';
+			
+			wait for clock_period / 2;
+			CCLK <= '1';
+			RCLK <= '0';
+			
+			wait for clock_period / 8;
+			
+			if ((OE = '1') and (Q = "ZZZZZZZZ")) or ((OE = '0') and not (Q = "ZZZZZZZZ")) then
+			else report "FAIL";
+			end if;
+			
+			if counter = 255 then
+				counter := 0;
+			else
+				counter := counter + 1;
+			end if;
 		
+		end loop;
+
 		wait;
    end process;
 

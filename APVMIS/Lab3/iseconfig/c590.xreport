@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2014-09-27T17:12:27</DateModified>
+  <DateModified>2014-10-05T15:18:52</DateModified>
   <ModuleName>c590</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>G:/bsuir-14-15-labs/APVMIS/Lab3/iseconfig/c590.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>G:/bsuir-14-15-labs/APVMIS/Lab3\</ImplementationReportsDirectory>
+  <SavedFilePath>D:/bsuir-14-15-labs/APVMIS/Lab3/iseconfig/c590.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>D:/bsuir-14-15-labs/APVMIS/Lab3\</ImplementationReportsDirectory>
   <DateInitialized>2014-09-27T15:17:25</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
