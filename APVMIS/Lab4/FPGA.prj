@@ -1,0 +1,4 @@
+vhdl work "jk.vhd"
+vhdl work "freqdiv.vhd"
+vhdl work "c590.vhd"
+vhdl work "FPGA.vhd"

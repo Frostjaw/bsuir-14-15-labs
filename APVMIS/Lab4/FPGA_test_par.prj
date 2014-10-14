@@ -1,0 +1,2 @@
+verilog work "netgen/par/FPGA_timesim.v"
+vhdl work "FPGA_test.vhd"

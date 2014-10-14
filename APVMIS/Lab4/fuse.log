@@ -1,0 +1,40 @@
+Running: C:\Xilinx\14.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib simprims_ver -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA_test_isim_translate.exe -prj C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA_test_translate.prj work.FPGA_test work.glbl 
+ISim P.49d (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/netgen/translate/FPGA_translate.v" into library work
+Parsing VHDL file "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA_test.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module glbl
+Compiling module X_ZERO
+Compiling module X_ONE
+Compiling module latchsre
+Compiling module X_LATCHE
+Compiling module X_XOR2
+Compiling module mux
+Compiling module X_MUX2
+Compiling module X_LUT4(INIT=16'b01)
+Compiling module x_lut2_mux4
+Compiling module X_LUT2(INIT=4'b0111)
+Compiling module x_lut3_mux4
+Compiling module X_LUT3(INIT=8'b01111111)
+Compiling module X_BUF
+Compiling module X_INV
+Compiling module X_IPAD
+Compiling module X_OPAD
+Compiling module X_OBUFT
+Compiling module X_OBUF
+Compiling module FPGA
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package vl_types
+Compiling architecture behavior of entity fpga_test
+Time Resolution for simulation is 1ps.
+Waiting for 13 sub-compilation(s) to finish...
+Compiled 4 VHDL Units
+Compiled 44 Verilog Units
+Built simulation executable C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA_test_isim_translate.exe
+Fuse Memory Usage: 32076 KB
+Fuse CPU Usage: 373 ms

@@ -1,0 +1,2 @@
+verilog work "netgen/translate/FPGA_translate.v"
+vhdl work "FPGA_test.vhd"

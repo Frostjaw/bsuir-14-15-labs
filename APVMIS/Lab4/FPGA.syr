@@ -1,0 +1,917 @@
+Release 14.4 - xst P.49d (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> Reading design: FPGA.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "FPGA.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "FPGA"
+Output Format                      : NGC
+Target Device                      : xc3s50-5-pq208
+
+---- Source Options
+Top Module Name                    : FPGA
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/jk.vhd" in Library work.
+Architecture behavioral of Entity jk is up to date.
+Compiling vhdl file "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/freqdiv.vhd" in Library work.
+Architecture behavioral of Entity freqdiv is up to date.
+Compiling vhdl file "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" in Library work.
+Entity <c590> compiled.
+Entity <c590> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA.vhd" in Library work.
+Architecture behavioral of Entity fpga is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <FPGA> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <freqdiv> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <c590> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <jk> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <FPGA> in library <work> (Architecture <behavioral>).
+Entity <FPGA> analyzed. Unit <FPGA> generated.
+
+Analyzing Entity <freqdiv> in library <work> (Architecture <behavioral>).
+Entity <freqdiv> analyzed. Unit <freqdiv> generated.
+
+Analyzing Entity <c590> in library <work> (Architecture <behavioral>).
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 71: Unconnected output port 'nQ' of component 'jk'.
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 72: Unconnected output port 'nQ' of component 'jk'.
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 73: Unconnected output port 'nQ' of component 'jk'.
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 74: Unconnected output port 'nQ' of component 'jk'.
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 75: Unconnected output port 'nQ' of component 'jk'.
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 76: Unconnected output port 'nQ' of component 'jk'.
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 77: Unconnected output port 'nQ' of component 'jk'.
+WARNING:Xst:753 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd" line 78: Unconnected output port 'nQ' of component 'jk'.
+Entity <c590> analyzed. Unit <c590> generated.
+
+Analyzing Entity <jk> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/jk.vhd" line 46: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <J>, <K>
+Entity <jk> analyzed. Unit <jk> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <freqdiv>.
+    Related source file is "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/freqdiv.vhd".
+    Found 32-bit adder for signal <counter$addsub0000> created at line 56.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <freqdiv> synthesized.
+
+
+Synthesizing Unit <jk>.
+    Related source file is "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/jk.vhd".
+WARNING:Xst:736 - Found 1-bit latch for signal <res$mux0001> created at line 52. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 1-bit 4-to-1 multiplexer for signal <res$mux0003> created at line 51.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <jk> synthesized.
+
+
+Synthesizing Unit <c590>.
+    Related source file is "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/c590.vhd".
+    Found 8-bit tristate buffer for signal <Q>.
+    Summary:
+	inferred   8 Tristate(s).
+Unit <c590> synthesized.
+
+
+Synthesizing Unit <FPGA>.
+    Related source file is "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA.vhd".
+WARNING:Xst:647 - Input <key3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <key4> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <key5> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <key6> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <key7> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <Q<7:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <FPGA> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Latches                                              : 16
+ 1-bit latch                                           : 16
+# Multiplexers                                         : 16
+ 1-bit 4-to-1 multiplexer                              : 16
+# Tristates                                            : 1
+ 8-bit tristate buffer                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Latches                                              : 16
+ 1-bit latch                                           : 16
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2677 - Node <counter/r7/res_mux0001> of sequential type is unconnected in block <FPGA>.
+WARNING:Xst:2677 - Node <counter/r6/res_mux0001> of sequential type is unconnected in block <FPGA>.
+WARNING:Xst:2677 - Node <counter/r5/res_mux0001> of sequential type is unconnected in block <FPGA>.
+WARNING:Xst:2170 - Unit freqdiv : the following signal(s) form a combinatorial loop: counter_cmp_eq0000, counter<0>, Madd_counter_addsub0000_lut<0>, counter_mux0000<0>, COUT, counter_addsub0000<0>.
+
+Optimizing unit <FPGA> ...
+
+Optimizing unit <freqdiv> ...
+
+Mapping all equations...
+WARNING:Xst:2170 - Unit FPGA : the following signal(s) form a combinatorial loop: divide_freq/Madd_counter_addsub0000_cy<6>, divide_freq/COUT_wg_cy<4>, divide_freq/counter_mux0000<2>, divide_freq/Madd_counter_addsub0000_cy<4>, divide_freq/COUT_wg_cy<0>, divide_freq/counter<2>, divide_freq/COUT_wg_cy<7>, divide_freq/Madd_counter_addsub0000_cy<2>, divide_freq/COUT_wg_cy<6>, divide_freq/COUT_wg_lut<0>, divide_freq/counter<2>7, divide_freq/counter_addsub0000<7>, divide_freq/COUT_wg_cy<3>, clock, divide_freq/counter<2>97, divide_freq/Madd_counter_addsub0000_cy<3>, divide_freq/Madd_counter_addsub0000_cy<5>, divide_freq/COUT_wg_cy<1>, divide_freq/COUT_wg_cy<2>, divide_freq/COUT_wg_cy<5>, counter/r0/res_not0002.
+WARNING:Xst:2170 - Unit FPGA : the following signal(s) form a combinatorial loop: divide_freq/counter<1>.
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block FPGA, actual ratio is 7.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : FPGA.ngr
+Top Level Output File Name         : FPGA
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 15
+
+Cell Usage :
+# BELS                             : 184
+#      GND                         : 1
+#      INV                         : 3
+#      LUT2                        : 14
+#      LUT3                        : 65
+#      LUT4                        : 27
+#      MUXCY                       : 40
+#      MUXF5                       : 1
+#      VCC                         : 1
+#      XORCY                       : 32
+# FlipFlops/Latches                : 13
+#      LD                          : 13
+# IO Buffers                       : 10
+#      IBUF                        : 4
+#      OBUF                        : 1
+#      OBUFT                       : 5
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s50pq208-5 
+
+ Number of Slices:                       60  out of    768     7%  
+ Number of Slice Flip Flops:              8  out of   1536     0%  
+ Number of 4 input LUTs:                109  out of   1536     7%  
+ Number of IOs:                          15
+ Number of bonded IOBs:                  10  out of    124     8%  
+    IOB Flip Flops:                       5
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+---------------------------------------------------+--------------------------------+-------+
+Clock Signal                                       | Clock buffer(FF name)          | Load  |
+---------------------------------------------------+--------------------------------+-------+
+clock(divide_freq/COUT_wg_cy<8>:O)                 | NONE(*)(counter/r4/res_mux0001)| 5     |
+counter/t7/res_not0002(counter/t7/res_not000226:O) | NONE(*)(counter/t7/res_mux0001)| 1     |
+counter/t6/res_not0002(counter/t6/res_not0002:O)   | NONE(*)(counter/t6/res_mux0001)| 1     |
+counter/t5/res_not0002(counter/t5/res_not0002:O)   | NONE(*)(counter/t5/res_mux0001)| 1     |
+counter/t4/res_not0002(counter/t4/res_not0002_f5:O)| NONE(*)(counter/t4/res_mux0001)| 1     |
+counter/t3/res_not0002(counter/t3/res_not00021:O)  | NONE(*)(counter/t3/res_mux0001)| 1     |
+counter/t2/res_not0002(counter/t2/res_not00021:O)  | NONE(*)(counter/t2/res_mux0001)| 1     |
+counter/t1/res_not0002(counter/t1/res_not00021:O)  | NONE(*)(counter/t1/res_mux0001)| 1     |
+counter/t0/res_not0002(counter/t0/res_not00021:O)  | NONE(*)(counter/t0/res_mux0001)| 1     |
+---------------------------------------------------+--------------------------------+-------+
+(*) These 9 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 2.340ns (Maximum Frequency: 427.369MHz)
+   Minimum input arrival time before clock: 2.716ns
+   Maximum output required time after clock: 9.290ns
+   Maximum combinational path delay: 6.618ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t7/res_not0002'
+  Clock period: 2.121ns (frequency: 471.376MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.121ns (Levels of Logic = 1)
+  Source:            counter/t7/res_mux0001 (LATCH)
+  Destination:       counter/t7/res_mux0001 (LATCH)
+  Source Clock:      counter/t7/res_not0002 falling
+  Destination Clock: counter/t7/res_not0002 falling
+
+  Data Path: counter/t7/res_mux0001 to counter/t7/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               2   0.551   0.915  counter/t7/res_mux0001 (counter/t7/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t7/res_mux00021 (counter/t7/res_mux0002)
+     LD:D                      0.176          counter/t7/res_mux0001
+    ----------------------------------------
+    Total                      2.121ns (1.206ns logic, 0.915ns route)
+                                       (56.8% logic, 43.2% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t6/res_not0002'
+  Clock period: 2.147ns (frequency: 465.777MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.147ns (Levels of Logic = 1)
+  Source:            counter/t6/res_mux0001 (LATCH)
+  Destination:       counter/t6/res_mux0001 (LATCH)
+  Source Clock:      counter/t6/res_not0002 falling
+  Destination Clock: counter/t6/res_not0002 falling
+
+  Data Path: counter/t6/res_mux0001 to counter/t6/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               3   0.551   0.941  counter/t6/res_mux0001 (counter/t6/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t6/res_mux00021 (counter/t6/res_mux0002)
+     LD:D                      0.176          counter/t6/res_mux0001
+    ----------------------------------------
+    Total                      2.147ns (1.206ns logic, 0.941ns route)
+                                       (56.2% logic, 43.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t5/res_not0002'
+  Clock period: 2.155ns (frequency: 463.940MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.155ns (Levels of Logic = 1)
+  Source:            counter/t5/res_mux0001 (LATCH)
+  Destination:       counter/t5/res_mux0001 (LATCH)
+  Source Clock:      counter/t5/res_not0002 falling
+  Destination Clock: counter/t5/res_not0002 falling
+
+  Data Path: counter/t5/res_mux0001 to counter/t5/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               4   0.551   0.949  counter/t5/res_mux0001 (counter/t5/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t5/res_mux00021 (counter/t5/res_mux0002)
+     LD:D                      0.176          counter/t5/res_mux0001
+    ----------------------------------------
+    Total                      2.155ns (1.206ns logic, 0.949ns route)
+                                       (56.0% logic, 44.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t4/res_not0002'
+  Clock period: 2.229ns (frequency: 448.722MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.229ns (Levels of Logic = 1)
+  Source:            counter/t4/res_mux0001 (LATCH)
+  Destination:       counter/t4/res_mux0001 (LATCH)
+  Source Clock:      counter/t4/res_not0002 falling
+  Destination Clock: counter/t4/res_not0002 falling
+
+  Data Path: counter/t4/res_mux0001 to counter/t4/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               6   0.551   1.023  counter/t4/res_mux0001 (counter/t4/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t4/res_mux00021 (counter/t4/res_mux0002)
+     LD:D                      0.176          counter/t4/res_mux0001
+    ----------------------------------------
+    Total                      2.229ns (1.206ns logic, 1.023ns route)
+                                       (54.1% logic, 45.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t3/res_not0002'
+  Clock period: 2.282ns (frequency: 438.193MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.282ns (Levels of Logic = 1)
+  Source:            counter/t3/res_mux0001 (LATCH)
+  Destination:       counter/t3/res_mux0001 (LATCH)
+  Source Clock:      counter/t3/res_not0002 falling
+  Destination Clock: counter/t3/res_not0002 falling
+
+  Data Path: counter/t3/res_mux0001 to counter/t3/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               7   0.551   1.076  counter/t3/res_mux0001 (counter/t3/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t3/res_mux00021 (counter/t3/res_mux0002)
+     LD:D                      0.176          counter/t3/res_mux0001
+    ----------------------------------------
+    Total                      2.282ns (1.206ns logic, 1.076ns route)
+                                       (52.8% logic, 47.2% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t2/res_not0002'
+  Clock period: 2.297ns (frequency: 435.436MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.297ns (Levels of Logic = 1)
+  Source:            counter/t2/res_mux0001 (LATCH)
+  Destination:       counter/t2/res_mux0001 (LATCH)
+  Source Clock:      counter/t2/res_not0002 falling
+  Destination Clock: counter/t2/res_not0002 falling
+
+  Data Path: counter/t2/res_mux0001 to counter/t2/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               8   0.551   1.091  counter/t2/res_mux0001 (counter/t2/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t2/res_mux00021 (counter/t2/res_mux0002)
+     LD:D                      0.176          counter/t2/res_mux0001
+    ----------------------------------------
+    Total                      2.297ns (1.206ns logic, 1.091ns route)
+                                       (52.5% logic, 47.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t1/res_not0002'
+  Clock period: 2.331ns (frequency: 428.927MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.331ns (Levels of Logic = 1)
+  Source:            counter/t1/res_mux0001 (LATCH)
+  Destination:       counter/t1/res_mux0001 (LATCH)
+  Source Clock:      counter/t1/res_not0002 falling
+  Destination Clock: counter/t1/res_not0002 falling
+
+  Data Path: counter/t1/res_mux0001 to counter/t1/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               9   0.551   1.125  counter/t1/res_mux0001 (counter/t1/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t1/res_mux00021 (counter/t1/res_mux0002)
+     LD:D                      0.176          counter/t1/res_mux0001
+    ----------------------------------------
+    Total                      2.331ns (1.206ns logic, 1.125ns route)
+                                       (51.7% logic, 48.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'counter/t0/res_not0002'
+  Clock period: 2.340ns (frequency: 427.369MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.340ns (Levels of Logic = 1)
+  Source:            counter/t0/res_mux0001 (LATCH)
+  Destination:       counter/t0/res_mux0001 (LATCH)
+  Source Clock:      counter/t0/res_not0002 falling
+  Destination Clock: counter/t0/res_not0002 falling
+
+  Data Path: counter/t0/res_mux0001 to counter/t0/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              10   0.551   1.134  counter/t0/res_mux0001 (counter/t0/res_mux0001)
+     LUT2:I1->O            1   0.479   0.000  counter/t0/res_mux00021 (counter/t0/res_mux0002)
+     LD:D                      0.176          counter/t0/res_mux0001
+    ----------------------------------------
+    Total                      2.340ns (1.206ns logic, 1.134ns route)
+                                       (51.5% logic, 48.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t7/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t7/res_mux0001 (LATCH)
+  Destination Clock: counter/t7/res_not0002 falling
+
+  Data Path: key2 to counter/t7/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t7/res_mux00021 (counter/t7/res_mux0002)
+     LD:D                      0.176          counter/t7/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t6/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t6/res_mux0001 (LATCH)
+  Destination Clock: counter/t6/res_not0002 falling
+
+  Data Path: key2 to counter/t6/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t6/res_mux00021 (counter/t6/res_mux0002)
+     LD:D                      0.176          counter/t6/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t5/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t5/res_mux0001 (LATCH)
+  Destination Clock: counter/t5/res_not0002 falling
+
+  Data Path: key2 to counter/t5/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t5/res_mux00021 (counter/t5/res_mux0002)
+     LD:D                      0.176          counter/t5/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t4/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t4/res_mux0001 (LATCH)
+  Destination Clock: counter/t4/res_not0002 falling
+
+  Data Path: key2 to counter/t4/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t4/res_mux00021 (counter/t4/res_mux0002)
+     LD:D                      0.176          counter/t4/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t3/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t3/res_mux0001 (LATCH)
+  Destination Clock: counter/t3/res_not0002 falling
+
+  Data Path: key2 to counter/t3/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t3/res_mux00021 (counter/t3/res_mux0002)
+     LD:D                      0.176          counter/t3/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t2/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t2/res_mux0001 (LATCH)
+  Destination Clock: counter/t2/res_not0002 falling
+
+  Data Path: key2 to counter/t2/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t2/res_mux00021 (counter/t2/res_mux0002)
+     LD:D                      0.176          counter/t2/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t1/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t1/res_mux0001 (LATCH)
+  Destination Clock: counter/t1/res_not0002 falling
+
+  Data Path: key2 to counter/t1/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t1/res_mux00021 (counter/t1/res_mux0002)
+     LD:D                      0.176          counter/t1/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/t0/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.716ns (Levels of Logic = 2)
+  Source:            key2 (PAD)
+  Destination:       counter/t0/res_mux0001 (LATCH)
+  Destination Clock: counter/t0/res_not0002 falling
+
+  Data Path: key2 to counter/t0/res_mux0001
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.715   1.346  key2_IBUF (key2_IBUF)
+     LUT2:I0->O            1   0.479   0.000  counter/t0/res_mux00021 (counter/t0/res_mux0002)
+     LD:D                      0.176          counter/t0/res_mux0001
+    ----------------------------------------
+    Total                      2.716ns (1.370ns logic, 1.346ns route)
+                                       (50.4% logic, 49.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock'
+  Total number of paths / destination ports: 5 / 5
+-------------------------------------------------------------------------
+Offset:              6.141ns (Levels of Logic = 1)
+  Source:            counter/r0/res_mux0001 (LATCH)
+  Destination:       led0 (PAD)
+  Source Clock:      clock rising
+
+  Data Path: counter/r0/res_mux0001 to led0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.551   0.681  counter/r0/res_mux0001 (counter/r0/res_mux0001)
+     OBUFT:I->O                4.909          led0_OBUFT (led0)
+    ----------------------------------------
+    Total                      6.141ns (5.460ns logic, 0.681ns route)
+                                       (88.9% logic, 11.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t2/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              9.290ns (Levels of Logic = 3)
+  Source:            counter/t2/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t2/res_not0002 falling
+
+  Data Path: counter/t2/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               8   0.551   1.216  counter/t2/res_mux0001 (counter/t2/res_mux0001)
+     LUT4:I0->O            1   0.479   0.976  counter/RCO12 (counter/RCO12)
+     LUT2:I0->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      9.290ns (6.418ns logic, 2.872ns route)
+                                       (69.1% logic, 30.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t3/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              9.151ns (Levels of Logic = 3)
+  Source:            counter/t3/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t3/res_not0002 falling
+
+  Data Path: counter/t3/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               7   0.551   1.076  counter/t3/res_mux0001 (counter/t3/res_mux0001)
+     LUT4:I1->O            1   0.479   0.976  counter/RCO12 (counter/RCO12)
+     LUT2:I0->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      9.151ns (6.418ns logic, 2.733ns route)
+                                       (70.1% logic, 29.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t4/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              8.986ns (Levels of Logic = 3)
+  Source:            counter/t4/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t4/res_not0002 falling
+
+  Data Path: counter/t4/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               6   0.551   0.912  counter/t4/res_mux0001 (counter/t4/res_mux0001)
+     LUT4:I2->O            1   0.479   0.976  counter/RCO12 (counter/RCO12)
+     LUT2:I0->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      8.986ns (6.418ns logic, 2.568ns route)
+                                       (71.4% logic, 28.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t5/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              8.877ns (Levels of Logic = 3)
+  Source:            counter/t5/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t5/res_not0002 falling
+
+  Data Path: counter/t5/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               4   0.551   0.802  counter/t5/res_mux0001 (counter/t5/res_mux0001)
+     LUT4:I3->O            1   0.479   0.976  counter/RCO12 (counter/RCO12)
+     LUT2:I0->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      8.877ns (6.418ns logic, 2.459ns route)
+                                       (72.3% logic, 27.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t6/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              9.016ns (Levels of Logic = 3)
+  Source:            counter/t6/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t6/res_not0002 falling
+
+  Data Path: counter/t6/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               3   0.551   1.066  counter/t6/res_mux0001 (counter/t6/res_mux0001)
+     LUT4:I0->O            1   0.479   0.851  counter/RCO25 (counter/RCO25)
+     LUT2:I1->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      9.016ns (6.418ns logic, 2.598ns route)
+                                       (71.2% logic, 28.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t7/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              8.865ns (Levels of Logic = 3)
+  Source:            counter/t7/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t7/res_not0002 falling
+
+  Data Path: counter/t7/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               2   0.551   0.915  counter/t7/res_mux0001 (counter/t7/res_mux0001)
+     LUT4:I1->O            1   0.479   0.851  counter/RCO25 (counter/RCO25)
+     LUT2:I1->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      8.865ns (6.418ns logic, 2.447ns route)
+                                       (72.4% logic, 27.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t0/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              8.973ns (Levels of Logic = 3)
+  Source:            counter/t0/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t0/res_not0002 falling
+
+  Data Path: counter/t0/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              10   0.551   1.023  counter/t0/res_mux0001 (counter/t0/res_mux0001)
+     LUT4:I2->O            1   0.479   0.851  counter/RCO25 (counter/RCO25)
+     LUT2:I1->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      8.973ns (6.418ns logic, 2.555ns route)
+                                       (71.5% logic, 28.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'counter/t1/res_not0002'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              8.928ns (Levels of Logic = 3)
+  Source:            counter/t1/res_mux0001 (LATCH)
+  Destination:       led5 (PAD)
+  Source Clock:      counter/t1/res_not0002 falling
+
+  Data Path: counter/t1/res_mux0001 to led5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               9   0.551   0.978  counter/t1/res_mux0001 (counter/t1/res_mux0001)
+     LUT4:I3->O            1   0.479   0.851  counter/RCO25 (counter/RCO25)
+     LUT2:I1->O            1   0.479   0.681  counter/RCO26 (led5_OBUF)
+     OBUF:I->O                 4.909          led5_OBUF (led5)
+    ----------------------------------------
+    Total                      8.928ns (6.418ns logic, 2.510ns route)
+                                       (71.9% logic, 28.1% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 5 / 5
+-------------------------------------------------------------------------
+Delay:               6.618ns (Levels of Logic = 2)
+  Source:            key0 (PAD)
+  Destination:       led0 (PAD)
+
+  Data Path: key0 to led0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   0.715   0.783  key0_IBUF (key0_IBUF)
+     OBUFT:T->O                5.120          led0_OBUFT (led0)
+    ----------------------------------------
+    Total                      6.618ns (5.835ns logic, 0.783ns route)
+                                       (88.2% logic, 11.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 3.81 secs
+ 
+--> 
+
+Total memory usage is 255644 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   22 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+
