@@ -1,0 +1,28 @@
+Command line:
+   FPGA_test_isim_translate.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  50722
+
+Tue Oct 14 19:41:16 2014
+
+
+ Elaboration Time: 0.0624 sec
+
+ Current Memory Usage: 518.373 Meg
+
+ Total Signals          : 3470
+ Total Nets             : 1821
+ Total Signal Drivers   : 1811
+ Total Blocks           : 524
+ Total Primitive Blocks : 362
+ Total Processes        : 1989
+ Total Traceable Variables  : 613
+ Total Scalar Nets and Variables : 19603
+
+ Total Simulation Time: 0.078 sec
+
+ Current Memory Usage: 518.373 Meg
+
+Tue Oct 14 19:41:44 2014
+

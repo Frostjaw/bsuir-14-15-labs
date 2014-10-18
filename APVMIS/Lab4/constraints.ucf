@@ -1,0 +1,18 @@
+# Синхросигнал 50Мгц от внешнего генератора 
+net clk loc = r8;
+# Светодиодные индикаторы
+net led0 loc = n6;
+net led1 loc = p5; 
+net led2 loc = j15; 
+net led3 loc = h16; 
+net led4 loc = c15; 
+net led5 loc = e15; 
+# Переключатели
+net key0 loc = t10;
+net key1 loc = t9;
+net key2 loc = t8;
+net key3 loc = t7;
+net key4 loc = t6;
+net key5 loc = t5;
+net key6 loc = c13;
+net key7 loc = b13;
