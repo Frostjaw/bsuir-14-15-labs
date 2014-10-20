@@ -40,32 +40,33 @@ entity jk is
 end jk;
 
 architecture Behavioral of jk is
-	
+	signal qtemp, notQtemp : std_logic :='0';
 begin
+	Q <= qtemp;
+	nQ <= notQtemp;
 
-	JK_tri: process (C, RN, SN)
-	variable JK, RS : STD_LOGIC_VECTOR (1 downto 0);
-	variable	res : STD_LOGIC := '0';
+	process(C,RN,SN)
 	begin
-		RS := (RN & SN);
-		JK := (J & K);
-		case (RS) is
-			when "01" => res := '0';
-			when "10" => res := '1';
-			when "11" => if (C = '1') then 
-								case (JK) is
-									when "01" => res := '0';
-									when "10" => res := '1';
-									when "11" => res := not res;
-									when others => null;
-								end case;
-							 end if;
-			when others => null;
-		end case;
-				  
-		Q <= res;
-		nQ <= not res;
-	end process JK_tri;
+		if(RN = '0') then           --notR the output.
+			qtemp <= '0';
+			notQtemp <= '1';
+		elsif(SN = '0') then
+			qtemp <= '1';
+			notQtemp <= '0';
+		elsif( rising_edge(C) ) then
+			if(J='0' and K='0') then       --No change in the output
+				NULL;
+			elsif(J='0' and K='1') then    --Set the output.
+				qtemp <= '0';
+				notQtemp <= '1';
+			elsif(J='1' and K='0') then    --Reset the output.
+				qtemp <= '1';
+				notQtemp <= '0';
+			else                           --Toggle the output.
+				qtemp <= not qtemp;
+				notQtemp <= not notQtemp;
+			end if;
+		end if;
+	end process;
 
 end Behavioral;
-

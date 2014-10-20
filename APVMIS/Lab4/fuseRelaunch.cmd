@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "simprims_ver" -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA_test_isim_translate.exe" -prj "C:/Users/Frostjaw/bsuir-14-15-labs/APVMIS/Lab4/FPGA_test_translate.prj" "work.FPGA_test" "work.glbl" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/APVMIS/Lab4/ARTIX_test_isim_beh.exe" -prj "C:/APVMIS/Lab4/ARTIX_test_beh.prj" "work.ARTIX_test" 
