@@ -1,0 +1,24 @@
+net leds<0>		loc = m26 | iostandard = lvcmos33;
+net leds<1>		loc = t24 | iostandard = lvcmos33;
+net leds<2>		loc = t25 | iostandard = lvcmos33;
+net leds<3>		loc = r26 | iostandard = lvcmos33;
+net leds<4> 	loc = f25 | iostandard = lvcmos25;
+net leds<5> 	loc = g25 | iostandard = lvcmos25;
+net leds<6> 	loc = g26 | iostandard = lvcmos25;
+
+net switch<0>		loc = r8  | iostandard = sstl15;
+net switch<1>		loc = p8  | iostandard = sstl15;
+net switch<2>		loc = r7  | iostandard = sstl15;
+net switch<3>		loc = r6  | iostandard = sstl15;
+
+net button<0> 	loc = p6  | iostandard = sstl15;
+net button<1> 	loc = r5  | iostandard = sstl15;
+net button<2> 	loc = u6  | iostandard = sstl15;
+
+net startbutton CLOCK_DEDICATED_ROUTE = FALSE | loc = u5  | iostandard = sstl15;
+
+net sysclk_p 		loc = r3  | iostandard = lvds_25;
+net sysclk_n 		loc = p3  | iostandard = lvds_25;
+
+#net tx			loc = ??? | iostandard = ???;
+net tx			loc = t5 | iostandard = lvcmos25;

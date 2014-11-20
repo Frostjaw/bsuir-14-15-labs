@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=E:\bsuir-14-15-labs\APVMIS\Lab5\device.ncd
+OUTFILE=E:\bsuir-14-15-labs\APVMIS\Lab5\device.bit
+FAMILY=Artix7
+PART=xc7a200t-3fbg676
+WORKINGDIR=E:\bsuir-14-15-labs\APVMIS\Lab5
+LICENSE=WebPack
+USER_INFO=__0_0_0
