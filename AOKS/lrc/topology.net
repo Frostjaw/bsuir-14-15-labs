@@ -1,0 +1,206 @@
+autostart = False
+version = 0.8.6
+[127.0.0.1:7200]
+    workingdir = C:\Users\Frostjaw\AppData\Local\Temp
+    udp = 10001
+    [[7200]]
+        image = D:\aoks-lrc\ios\c7200-advipservicesk9-mz.124-2.T.image
+        ram = 128
+        idlepc = 0x602558f4
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R1]]
+        console = 2101
+        aux = 2501
+        cnfg = configs\R1.cfg
+        slot1 = PA-A1
+        a1/0 = ATM1 1
+        x = -492.0
+        y = 175.0
+        z = 1.0
+    [[ROUTER R2]]
+        console = 2102
+        aux = 2502
+        cnfg = configs\R2.cfg
+        slot1 = PA-A1
+        a1/0 = ATM2 2
+        slot2 = PA-A1
+        a2/0 = ATM4 1
+        slot3 = PA-A1
+        a3/0 = ATM5 3
+        x = -43.0
+        y = -192.0
+        z = 1.0
+    [[ATMSW ATM4]]
+        1:1:23 = 3:1:23
+        3:1:23 = 1:1:23
+        1 = R2 a2/0
+        3 = R3 a2/0
+        x = 256.5
+        y = -296.5
+        z = 1.0
+    [[ATMSW ATM5]]
+        1:1:23 = 2:1:23
+        2:1:23 = 1:1:23
+        1 = ATM4 2
+        2 = R3 a3/0
+        x = 507.5
+        y = -162.5
+        z = 1.0
+    [[ATMSW ATM1]]
+        1:1:12 = 2:1:12
+        1:1:13 = 2:1:13
+        2:1:12 = 1:1:12
+        2:1:13 = 1:1:13
+        1 = R1 a1/0
+        2 = ATM2 1
+        x = -275.5
+        y = 86.5
+        z = 1.0
+    [[ATMSW ATM2]]
+        1:1:12 = 2:1:12
+        1:1:13 = 3:1:13
+        2:1:12 = 1:1:12
+        3:1:13 = 1:1:13
+        1 = ATM1 2
+        2 = R2 a1/0
+        3 = ATM3 1
+        x = -97.5
+        y = 2.5
+        z = 1.0
+        hx = -19.5
+        hy = -25.0
+[127.0.0.1:7201]
+    workingdir = C:\Users\Frostjaw\AppData\Local\Temp
+    udp = 10101
+    [[7200]]
+        image = D:\aoks-lrc\ios\c7200-advipservicesk9-mz.124-2.T.image
+        ram = 128
+        idlepc = 0x602558f4
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R3]]
+        console = 2103
+        aux = 2503
+        cnfg = configs\R3.cfg
+        slot1 = PA-A1
+        a1/0 = ATM3 2
+        slot2 = PA-A1
+        a2/0 = ATM4 3
+        slot3 = PA-A1
+        a3/0 = ATM5 2
+        x = 478.0
+        y = 96.0
+        z = 1.0
+        hx = 36.5
+        hy = -21.0
+    [[ATMSW ATM3]]
+        1:1:13 = 2:1:13
+        2:1:13 = 1:1:13
+        1 = ATM2 3
+        2 = R3 a1/0
+        x = 167.5
+        y = 81.5
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "1"
+        x = -13.6252487295
+        y = 15.1804500208
+        interface = ATM3 1
+    [[NOTE 2]]
+        text = "2"
+        x = 65.4182112406
+        y = 20.9433593617
+        interface = ATM3 2
+    [[NOTE 3]]
+        text = "3"
+        x = 64.6252487295
+        y = 31.8195499792
+        interface = ATM2 3
+    [[NOTE 4]]
+        text = "1"
+        x = -8.94142457413
+        y = 43.8417863843
+        interface = ATM2 1
+    [[NOTE 5]]
+        text = "2"
+        x = 39.8767952277
+        y = -30.5370206495
+        interface = ATM2 2
+    [[NOTE 6]]
+        text = "2"
+        x = 59.9414245741
+        y = 3.15821361569
+        interface = ATM1 2
+    [[NOTE 7]]
+        text = "1"
+        x = -9.94387074124
+        y = 42.0400115124
+        interface = ATM1 1
+    [[NOTE 8]]
+        text = "1"
+        x = -17.0292976581
+        y = -21.797558486
+        interface = ATM5 1
+    [[NOTE 9]]
+        text = "2"
+        x = 30.4335180344
+        y = 59.446584989
+        interface = ATM5 2
+    [[NOTE 10]]
+        text = "3"
+        x = -21.3613579542
+        y = 30.1725171603
+        interface = ATM5 3
+    [[NOTE 11]]
+        text = "2"
+        x = 63.0292976581
+        y = 46.797558486
+        interface = ATM4 2
+    [[NOTE 12]]
+        text = "3"
+        x = 34.2152659298
+        y = 58.0923685619
+        interface = ATM4 3
+    [[NOTE 13]]
+        text = "1"
+        x = -12.1852223962
+        y = 36.9098476111
+        interface = ATM4 1
+    [[NOTE 14]]
+        text = "a3/0"
+        x = 45.0664819656
+        y = -43.946584989
+        interface = R3 a3/0
+    [[NOTE 15]]
+        text = "a2/0"
+        x = -35.7152659298
+        y = -26.5923685619
+        interface = R3 a2/0
+    [[NOTE 16]]
+        text = "a1/0"
+        x = -33.9182112406
+        y = 31.5566406383
+        interface = R3 a1/0
+    [[NOTE 17]]
+        text = "a3/0"
+        x = 72.8613579542
+        y = 25.3274828397
+        interface = R2 a3/0
+    [[NOTE 18]]
+        text = "a2/0"
+        x = 59.6852223962
+        y = -23.4098476111
+        interface = R2 a2/0
+    [[NOTE 19]]
+        text = "a1/0"
+        x = 20.6232047723
+        y = 60.0370206495
+        interface = R2 a1/0
+    [[NOTE 20]]
+        text = "a1/0"
+        x = 68.4438707412
+        y = 3.45998848765
+        interface = R1 a1/0
