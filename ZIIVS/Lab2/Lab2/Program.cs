@@ -9,8 +9,6 @@ namespace Lab2
 {
     class Program
     {
-        static int[] primeNumbers = new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53 };
-
         const int p = 53;
         const int a = 37;
         const int b = 41;
@@ -19,6 +17,8 @@ namespace Lab2
 
         static void Main(string[] args)
         {
+            int[] primeNumbers = PrimeNumbers.NumbersLessThan(p);
+
             Console.OutputEncoding = Encoding.Unicode;
 
             Console.WriteLine("a = " + a + "\tb = " + b + "\tp = " + p + "\tμ = " + μ);
@@ -41,6 +41,7 @@ namespace Lab2
             {
                 for (int j = 0; j < primeNumbers.Length; j++)
                 {
+
                     int _a = primeNumbers[i];
                     int _b = primeNumbers[j];
                     int _α = Key(_a, p);
@@ -54,7 +55,7 @@ namespace Lab2
                         {
                             if (μ2 == Exchange(μ2, _α, _β, _a, _b))
                             {
-                                Console.WriteLine("a = " + _a + "\tb = " + _b + "\tα = " + _α + "\tβ = " + _β);
+                                Console.WriteLine("a = " + _a + " b = " + _b + " α = " + _α + " β = " + _β);
                             }
                         }
                     }
